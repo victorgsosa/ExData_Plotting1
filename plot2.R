@@ -1,0 +1,10 @@
+source("read.electric.data.R")
+electric.data <- read.electric.data()
+png(filename = "plot2.png", width = 480, height = 480)
+with(electric.data, {
+    plot(Datetime, Global_active_power, type="l", xaxt = "n", ylab = "", xlab = "")
+    at <- seq(1, length(Datetime), 1440)
+    axis(1, Datetime[at], labels=format(Datetime[at], "%a"))
+    title(ylab = "Global Active Power (kilowatts)")
+})
+dev.off()
